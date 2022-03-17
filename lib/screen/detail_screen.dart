@@ -2,13 +2,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:me/main.dart';
 
-class WriteScreen extends StatelessWidget {
-  const WriteScreen({Key? key}) : super(key: key);
+import '../model/Account.dart';
+import 'home_screen.dart';
+
+class DetailScreen extends StatelessWidget {
+  final Account account;
+  const DetailScreen({Key? key, required this.account}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final keyEditingController = TextEditingController(text: 'key');
-    final valueEditingController = TextEditingController(text: 'value');
+    final keyEditingController = TextEditingController(text: account.key);
+    final valueEditingController = TextEditingController(text: account.value);
+
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -62,8 +67,7 @@ class WriteScreen extends StatelessWidget {
         child: const Icon(Icons.save),
         backgroundColor: Colors.teal,
         onPressed: () {
-          CollectionReference account = FirebaseFirestore.instance.collection('yuihmoo');
-          account.add({
+          account.reference.update({
             'key' : keyEditingController.text,
             'value' : valueEditingController.text
           });

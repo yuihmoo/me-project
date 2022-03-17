@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:me/screen/write_screen.dart';
 
 import '../model/Account.dart';
+import 'detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -37,22 +38,33 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildBody(BuildContext context, List<DocumentSnapshot> snapshot) {
-    List<Account> account =
+    List<Account> accounts =
         snapshot.map((p) => Account.fromSnapshot(p)).toList();
+
     return Scaffold(
       body: ListView.builder(
-        itemCount: account.length,
+        itemCount: accounts.length,
         itemBuilder: (context, index) {
           return ListTile(
             leading: const Icon(Icons.save),
-            title: Text(account[index].key),
-            subtitle: Text(account[index].value),
+            title: Text(accounts[index].key),
+            subtitle: Text(accounts[index].value),
             contentPadding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-            trailing: const Icon(Icons.more_vert),
-            onTap: () {
+            trailing: FloatingActionButton(
+              heroTag: ('del$index'),
+              child: const Icon(Icons.delete),
+              backgroundColor: Colors.black12,
+              foregroundColor: Colors.white60,
+              onPressed: () {
+                accounts[index].reference.delete();
+              },
+            ),
+            onTap: () async {
+              final account = accounts[index];
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Container()),
+                MaterialPageRoute(
+                    builder: (context) => DetailScreen(account: account)),
               );
             },
           );

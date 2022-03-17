@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:me/main.dart';
 
 import '../model/Account.dart';
+import '../widget/bottom_bar.dart';
 import 'home_screen.dart';
 
 class DetailScreen extends StatelessWidget {

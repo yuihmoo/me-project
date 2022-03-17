@@ -9,6 +9,7 @@ class WriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final keyEditingController = TextEditingController(text: 'key');
     final valueEditingController = TextEditingController(text: 'value');
+
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

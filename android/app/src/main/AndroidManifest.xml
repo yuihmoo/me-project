@@ -7,7 +7,7 @@
    <application
         android:label="Me"
         android:name="${applicationName}"
-        android:icon="@mipmap/icon_me">
+        android:icon="@mipmap/icon_me4">
         <activity
             android:name=".MainActivity"
             android:exported="true"

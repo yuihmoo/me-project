@@ -2,9 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:me/screen/write_screen.dart';
 
-import '../model/Account.dart';
+import '../model/account.dart';
 import 'detail_screen.dart';
 
+///todo 주석을 달아보자.
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -38,8 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildBody(BuildContext context, List<DocumentSnapshot> snapshot) {
-    List<Account> accounts =
-        snapshot.map((p) => Account.fromSnapshot(p)).toList();
+    List accounts = snapshot.map((p) => Account.fromDocSnapshot(p)).toList();
 
     return Scaffold(
       body: ListView.builder(

@@ -12,7 +12,7 @@ class Account {
       : key = map['key'],
         value = map['value'];
 
-  Account.fromSnapshot(DocumentSnapshot snapshot)
+  Account.fromDocSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data(), reference: snapshot.reference);
 
   Account.fromJson(Map<String, dynamic> json)

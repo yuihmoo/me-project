@@ -1,10 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:me/main.dart';
 
-import '../model/Account.dart';
-import '../widget/bottom_bar.dart';
-import 'home_screen.dart';
+import '../model/account.dart';
 
 class DetailScreen extends StatelessWidget {
   final Account account;
